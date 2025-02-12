@@ -1,0 +1,25 @@
+{
+	"name": "nest-react-expo",
+	"version": "1.0.0",
+	"description": "",
+	"private": "true",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"lint": "npx eslint packages/backend packages/frontend packages/mobile",
+		"lint:fix": "npx eslint packages/backend packages/frontend packages/mobile --fix",
+		"prepare": "husky"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-prettier": "^5.1.3",
+		"prettier": "^3.2.5",
+		"typescript": "^5.3.3"
+	}
+}
