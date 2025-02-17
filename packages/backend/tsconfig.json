@@ -18,8 +18,12 @@
 		"baseUrl": ".",
 		"noImplicitAny": true,
 		"paths": {
-			"@/*": ["./src/*"]
+  			"@auth/*": ["./src/auth/*"],
+  			"@decorators/*": ["./src/auth/decorators/*"],
+  			"@guards/*": ["./src/auth/guards/*"]
 		}
+
+
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules"]

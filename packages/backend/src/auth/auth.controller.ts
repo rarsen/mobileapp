@@ -1,14 +1,14 @@
-import { Controller, Get, Post, Body, Query, UseGuards, Request, } from '@nestjs/common';
-import { AuthService } from './auth/auth.service';
-import { RegisterDto } from './auth/dto/register.dto';
-import { LoginDto } from './auth/dto/login.dto';
+import { Controller, Post, Body, Get, UseGuards, Request, Query } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { RegisterDto } from './dto/register.dto';
+import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { Roles } from '@decorators/roles.decorator';
+import { Roles } from './decorators/roles.decorator';
 import { RoleGuard } from '@guards/role.guard';
+import { Role } from '@prisma/client';
 
-
-@Controller()
-export class AppController {
+@Controller('auth')
+export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
@@ -33,10 +33,11 @@ export class AppController {
   }
 
   @Get('admin')
-@UseGuards(AuthGuard('jwt'), RoleGuard)
-@Roles('ADMIN')
-getAdminRoute() {
-  return { message: 'This is an admin-only route' };
-}
+  @UseGuards(AuthGuard('jwt'), RoleGuard)
+  @Roles(Role.ADMIN) 
+  getAdminRoute() {
+    return { message: 'This is an admin-only route' };
+  }
 
+  
 }
